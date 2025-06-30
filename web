@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Workflows & Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .active-tab {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-robot text-blue-500 text-2xl"></i>
+                <h1 class="text-xl font-bold text-gray-800">WorkflowAI</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-600 hover:text-blue-500 transition" onclick="showSection('workflows')">Workflows</a>
+                <a href="#" class="text-gray-600 hover:text-blue-500 transition" onclick="showSection('agents')">AI Agents</a>
+                <a href="#" class="text-gray-600 hover:text-blue-500 transition" onclick="showSection('tools')">General Tools</a>
+            </nav>
+            <button class="md:hidden text-gray-600" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white py-2 px-4 shadow-md">
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-500" onclick="showSection('workflows'); toggleMobileMenu()">Workflows</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-500" onclick="showSection('agents'); toggleMobileMenu()">AI Agents</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-500" onclick="showSection('tools'); toggleMobileMenu()">General Tools</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Automate Your Work with AI</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Discover powerful workflows, AI agents, and tools to boost your productivity.</p>
+        </section>
+
+        <!-- Tabs -->
+        <div class="flex border-b border-gray-200 mb-8 overflow-x-auto">
+            <button id="workflowsTab" class="px-6 py-3 font-medium text-gray-600 active-tab" onclick="showSection('workflows')">
+                <i class="fas fa-project-diagram mr-2"></i> Workflows
+            </button>
+            <button id="agentsTab" class="px-6 py-3 font-medium text-gray-600" onclick="showSection('agents')">
+                <i class="fas fa-brain mr-2"></i> AI Agents
+            </button>
+            <button id="toolsTab" class="px-6 py-3 font-medium text-gray-600" onclick="showSection('tools')">
+                <i class="fas fa-tools mr-2"></i> General Tools
+            </button>
+        </div>
+
+        <!-- Workflows Section -->
+        <section id="workflows" class="section-content">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">Popular Workflows</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Workflow Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fab fa-microsoft text-blue-500 text-2xl mr-3"></i>
+                            <h4 class="text-lg font-semibold">Microsoft Good Morning Flow</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">Automatically send good morning messages to your default email list using Microsoft Power Automate.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Difficulty: Easy</span>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition" onclick="showWorkflowDetails('microsoft-flow')">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workflow Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-code-branch text-green-500 text-2xl mr-3"></i>
+                            <h4 class="text-lg font-semibold">N8N Morning Greetings</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">Send personalized morning messages to multiple contacts using N8N workflow automation.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Difficulty: Medium</span>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition" onclick="showWorkflowDetails('n8n-flow')">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Agents Section -->
+        <section id="agents" class="section-content hidden">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">AI Agents</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Agent Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-comment-dots text-purple-500 text-2xl mr-3"></i>
+                            <h4 class="text-lg font-semibold">Morning Message Agent</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">An AI agent that crafts and sends personalized morning messages to your contacts.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Free</span>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition" onclick="showAgentDetails('morning-agent')">
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- General Tools Section -->
+        <section id="tools" class="section-content hidden">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">General Tools</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Tool Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-qrcode text-red-500 text-2xl mr-3"></i>
+                            <h4 class="text-lg font-semibold">QR Code Generator</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">Create custom QR codes for URLs, contact information, WiFi credentials and more.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Free</span>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition" onclick="showToolDetails('qr-generator')">
+                                Use Tool
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Details -->
+    <div id="detailsModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-screen overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 id="modalTitle" class="text-2xl font-bold text-gray-800"></h3>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="modalContent" class="text-gray-700">
+                    <!-- Content will be loaded here -->
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button onclick="closeModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md mr-2 transition">
+                        Close
+                    </button>
+                    <button id="downloadBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition hidden">
+                        <i class="fas fa-download mr-2"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR Generator Tool -->
+    <div id="qrGeneratorModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">QR Code Generator</h3>
+                    <button onclick="closeQrModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="mb-4">
+                    <label for="qrContent" class="block text-sm font-medium text-gray-700 mb-1">Enter text or URL</label>
+                    <input type="text" id="qrContent" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="https://example.com">
+                </div>
+                <div class="flex justify-center mb-4">
+                    <div id="qrCodeDisplay" class="p-4 border border-gray-200 rounded-md bg-white">
+                        <!-- QR code will appear here -->
+                        <p class="text-gray-500 text-center">QR Code will appear here</p>
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <button onclick="closeQrModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md mr-2 transition">
+                        Cancel
+                    </button>
+                    <button onclick="generateQR()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition">
+                        Generate QR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show section based on tab click
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.remove('hidden');
+            
+            // Update active tab
+            document.getElementById('workflowsTab').classList.remove('active-tab');
+            document.getElementById('agentsTab').classList.remove('active-tab');
+            document.getElementById('toolsTab').classList.remove('active-tab');
+            
+            document.getElementById(sectionId + 'Tab').classList.add('active-tab');
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Show workflow details modal
+        function showWorkflowDetails(workflowId) {
+            const modal = document.getElementById('detailsModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            downloadBtn.classList.remove('hidden');
+            
+            if (workflowId === 'microsoft-flow') {
+                title.textContent = 'Microsoft Good Morning Flow';
+                content.innerHTML = `
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-lg mb-2">Description</h4>
+                        <p class="mb-4">This workflow automatically sends good morning messages to your default email list at a scheduled time using Microsoft Power Automate.</p>
+                        
+                        <h4 class="font-semibold text-lg mb-2">Steps to Implement</h4>
+                        <ol class="list-decimal pl-5 space-y-2">
+                            <li>Sign in to Microsoft Power Automate</li>
+                            <li>Create a new scheduled cloud flow</li>
+                            <li>Set the recurrence (daily at 8 AM)</li>
+                            <li>Add an "Office 365 Outlook" action to send email</li>
+                            <li>Configure your message template</li>
+                            <li>Add your recipient list</li>
+                            <li>Save and test the flow</li>
+                        </ol>
+                        
+                        <div class="mt-6 bg-blue-50 p-4 rounded-md">
+                            <h4 class="font-semibold text-blue-800 mb-2">Download Resources</h4>
+                            <p>Download the complete step-by-step guide and flow template.</p>
+                        </div>
+                    </div>
+                `;
+                downloadBtn.onclick = () => {
+                    alert('Microsoft Flow template downloaded!');
+                    closeModal();
+                };
+            } else if (workflowId === 'n8n-flow') {
+                title.textContent = 'N8N Morning Greetings';
+                content.innerHTML = `
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-lg mb-2">Description</h4>
+                        <p class="mb-4">This N8N workflow sends personalized morning messages to multiple contacts with customizable templates.</p>
+                        
+                        <h4 class="font-semibold text-lg mb-2">Steps to Implement</h4>
+                        <ol class="list-decimal pl-5 space-y-2">
+                            <li>Install N8N or use the cloud version</li>
+                            <li>Create a new workflow</li>
+                            <li>Add a Schedule Trigger node</li>
+                            <li>Add a Function node to generate messages</li>
+                            <li>Add an Email node (SMTP or service)</li>
+                            <li>Configure your recipient list (CSV or database)</li>
+                            <li>Test and activate the workflow</li>
+                        </ol>
+                        
+                        <div class="mt-6 bg-blue-50 p-4 rounded-md">
+                            <h4 class="font-semibold text-blue-800 mb-2">Download Resources</h4>
+                            <p>Download the JSON workflow file and sample recipient CSV.</p>
+                        </div>
+                    </div>
+                `;
+                downloadBtn.onclick = () => {
+                    alert('N8N workflow files downloaded!');
+                    closeModal();
+                };
+            }
+            
+            modal.classList.remove('hidden');
+        }
+
+        // Show agent details modal
+        function showAgentDetails(agentId) {
+            const modal = document.getElementById('detailsModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            downloadBtn.classList.add('hidden');
+            
+            if (agentId === 'morning-agent') {
+                title.textContent = 'Morning Message Agent';
+                content.innerHTML = `
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-lg mb-2">About This Agent</h4>
+                        <p class="mb-4">This AI agent automatically crafts and sends personalized morning messages to your contacts based on their preferences and your relationship with them.</p>
+                        
+                        <h4 class="font-semibold text-lg mb-2">Features</h4>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Personalized message generation</li>
+                            <li>Multiple delivery options (email, SMS, messaging apps)</li>
+                            <li>Learning from responses to improve future messages</li>
+                            <li>Customizable tone and style</li>
+                            <li>Scheduling options</li>
+                        </ul>
+                        
+                        <div class="mt-6 bg-purple-50 p-4 rounded-md">
+                            <h4 class="font-semibold text-purple-800 mb-2">Getting Started</h4>
+                            <p>This agent is completely free to use. Click "Get Started" to configure your agent.</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            modal.classList.remove('hidden');
+        }
+
+        // Show tool details modal
+        function showToolDetails(toolId) {
+            if (toolId === 'qr-generator') {
+                document.getElementById('qrGeneratorModal').classList.remove('hidden');
+                return;
+            }
+            
+            const modal = document.getElementById('detailsModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            downloadBtn.classList.add('hidden');
+            
+            modal.classList.remove('hidden');
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('detailsModal').classList.add('hidden');
+        }
+
+        // QR Code Generator functions
+        function closeQrModal() {
+            document.getElementById('qrGeneratorModal').classList.add('hidden');
+        }
+
+        function generateQR() {
+            const content = document.getElementById('qrContent').value.trim();
+            const qrDisplay = document.getElementById('qrCodeDisplay');
+            
+            if (!content) {
+                alert('Please enter some text or URL');
+                return;
+            }
+            
+            // In a real implementation, you would generate a QR code here
+            // For this example, we'll just display the content
+            qrDisplay.innerHTML = `
+                <div class="text-center">
+                    <div class="mx-auto w-48 h-48 bg-gray-100 flex items-center justify-center mb-2">
+                        <p class="text-xs text-gray-500">[QR Code for: ${content}]</p>
+                    </div>
+                    <p class="text-sm text-gray-700">Scan this QR code to access:<br>${content}</p>
+                </div>
+            `;
+        }
+
+        // Initialize with workflows section visible
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('workflows');
+        });
+    </script>
+</body>
+</html>
